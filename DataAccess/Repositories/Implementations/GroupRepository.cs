@@ -12,11 +12,14 @@ namespace DataAccess.Repositories.Implementations
     public class GroupRepository : IRepository<Group>
 
     {
-        public object DbConetxt { get; private set; }
-
-        public void Create(Group entity)
+        private static int id;
+        
+        public Group Create(Group entity)
         {
+            id++;
+            entity.Id = id;
             DbContext.Groups.Add(entity);
+            return entity;
         }
 
         public void Delete(Group entity)
@@ -24,16 +27,13 @@ namespace DataAccess.Repositories.Implementations
             DbContext.Groups.Remove(entity);
         }
 
-     
-  
-
         public void Update(Group entity)
         {
             var group = DbContext.Groups.Find(g => g.Id == entity.Id);
             if (group != null)
             {
                 group.Name = entity.Name;
-                group.Maxsize = entity.Maxsize;
+                group.MaxSize = entity.MaxSize;
             }
         }
         public Group Get(Predicate<Group> filter = null)

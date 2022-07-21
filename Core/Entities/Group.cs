@@ -13,7 +13,7 @@ namespace Core.Entities
 
         public string Name { get; set; }
 
-        public int Maxsize { get; set; }
+        public int MaxSize { get; set; }
         public object Surname { get; set; }
     }
 }

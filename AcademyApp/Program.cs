@@ -1,6 +1,9 @@
 ﻿using System;
 using Core.Constans;
+using Core.Entities;
 using Core.Helpers;
+using DataAccess.Repositories.Implementations;
+using Manage.Controllers;
 
 namespace AcademyApp
 {
@@ -8,6 +11,8 @@ namespace AcademyApp
     {
         static void Main(string[] args)
         {
+            GroupController _groupController = new GroupController();
+
             ConsoleHelper.WriteTextWithColor(ConsoleColor.Cyan, "Salam");
             Console.WriteLine("----");
 
@@ -27,23 +32,29 @@ namespace AcademyApp
                 bool result = int.TryParse(number, out selectedNumber);
                 if (result)
                 {
-                    if (selectedNumber >= 0 && selectedNumber <=5)
+                    if (selectedNumber >= 0 && selectedNumber <= 5)
                     {
                         switch (selectedNumber)
                         {
-                            case (int)Options.GreateGroup:
+                            case (int)Options.CreateGroup:
+                                _groupController.CreateGroup();
                                 break;
                             case (int)Options.UpdateGroup:
+                                _groupController.UpdateGroup();
                                 break;
                             case (int)Options.DeleteGroup:
+                                _groupController.DeleteGroup();
                                 break;
-                            case (int)Options:AllGroups:                       
+                            case (int)Options.AllGroups:
+                                _groupController.AllGroups();
                                 break;
-                            case (int)Options:GetGroupByName:
+                            case (int)Options.GetGroupByName:
+                                _groupController.GetGroupByName();
                                 break;
-                            case (int)Options:Exit:
-                                break;
-                               
+                            case (int)Options.Exit:
+                                _groupController.Exit();
+                                return;
+
                         }
                     }
                     else
@@ -56,11 +67,11 @@ namespace AcademyApp
                     ConsoleHelper.WriteTextWithColor(ConsoleColor.Red, "mumkunse duzgun reqemi daxil edin");
                 }
 
-             }
+            }
 
-            
 
-           
+
+
 
 
 

@@ -11,6 +11,19 @@
         "runtime": {
           "bin/placeholder/Core.dll": {}
         }
+      },
+      "DataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataAccess.dll": {}
+        }
       }
     }
   },
@@ -19,11 +32,17 @@
       "type": "project",
       "path": "../Core/Core.csproj",
       "msbuildProject": "../Core/Core.csproj"
+    },
+    "DataAccess/1.0.0": {
+      "type": "project",
+      "path": "../DataAccess/DataAccess.csproj",
+      "msbuildProject": "../DataAccess/DataAccess.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "Core >= 1.0.0"
+      "Core >= 1.0.0",
+      "DataAccess >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -60,6 +79,9 @@
           "projectReferences": {
             "C:\\Users\\HP\\source\\repos\\Manage\\Core\\Core.csproj": {
               "projectPath": "C:\\Users\\HP\\source\\repos\\Manage\\Core\\Core.csproj"
+            },
+            "C:\\Users\\HP\\source\\repos\\Manage\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "C:\\Users\\HP\\source\\repos\\Manage\\DataAccess\\DataAccess.csproj"
             }
           }
         }

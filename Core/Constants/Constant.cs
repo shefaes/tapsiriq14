@@ -10,10 +10,10 @@ namespace Core.Constans
 
     {
         Exit,
-        GreateGroup,
+        CreateGroup,
         UpdateGroup,
         DeleteGroup,
-        AllGroup,
-        GetGroupByName
+        AllGroups,
+        GetGroupByName,
     }
 }

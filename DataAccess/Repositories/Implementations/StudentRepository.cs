@@ -11,12 +11,11 @@ namespace DataAccess.Repositories.Implementations
 {
     public class StudentRepository:IRepository<Student>
     {
- 
-        public object DbConetxt { get; private set; }
 
-        public void Create(Student entity)
+        public Student Create(Student entity)
         {
             DbContext.Students.Add(entity);
+            return entity;
         }
 
         public void Delete(Student entity)

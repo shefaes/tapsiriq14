@@ -6,20 +6,6 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v5.0": {
-      "Manage/1.0.0": {
-        "dependencies": {
-          "Core": "1.0.0",
-          "DataAccess": "1.0.0"
-        },
-        "runtime": {
-          "Manage.dll": {}
-        }
-      },
-      "Core/1.0.0": {
-        "runtime": {
-          "Core.dll": {}
-        }
-      },
       "DataAccess/1.0.0": {
         "dependencies": {
           "Core": "1.0.0"
@@ -27,21 +13,21 @@
         "runtime": {
           "DataAccess.dll": {}
         }
+      },
+      "Core/1.0.0": {
+        "runtime": {
+          "Core.dll": {}
+        }
       }
     }
   },
   "libraries": {
-    "Manage/1.0.0": {
+    "DataAccess/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
     "Core/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "DataAccess/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
