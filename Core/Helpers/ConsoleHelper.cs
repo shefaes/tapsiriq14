@@ -14,6 +14,11 @@ namespace Core.Helpers
             Console.WriteLine(text);
             Console.ResetColor();
 
-        }   
+        }
+
+        public static void WriteTextWithColor(object grey, string v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

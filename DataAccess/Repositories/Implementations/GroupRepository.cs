@@ -60,5 +60,10 @@ namespace DataAccess.Repositories.Implementations
             }
 
         }
+
+        public static implicit operator GroupRepository(StudentRepository v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
