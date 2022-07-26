@@ -143,12 +143,8 @@ namespace Manage.Controllers
 
         public void GetStudentByGroup()
         {  
-            var student = _studentRepository.GetAll();
-            ConsoleHelper.WriteTextWithColor(ConsoleColor.Cyan, "All students");
-            foreach (var student in group)
-            {
-                Console.WriteLine($"Name:{student.Name}, Max size:{student.MaxSize}");
-            }
+            
+            
 
         }
 
