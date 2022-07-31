@@ -14,9 +14,8 @@ namespace AcademyApp
             GroupController _groupController = new GroupController();
             StudentController _studentController = new StudentController();
             AdminController _adminController = new AdminController();
-            //AdminRepository _adminRepository = new AdminRepository();
-            //GroupRepository _groupRepository = new GroupRepository();
-            //StudentRepository _studentRepository = new StudentRepository();
+            TeacherController _teacherController = new TeacherController();
+           
 
             Authentication:  var admin = _adminController.Authenticate();
 
@@ -31,13 +30,19 @@ namespace AcademyApp
                     ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "1 - Create Group");
                     ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "2 - Update Group");
                     ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "3 - Delete Group");
-                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "4 - All Groups ");
-                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "5 - Get Group By Name ");
-                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "6 - Create Student ");
-                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "7-  Update Student ");
-                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "8 - Delete Student ");
-                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "9 - Get Student by Group ");
-                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "10 - Get All Student by Group");
+                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "4 - All Groups");
+                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "5 - Get Group By Name");
+                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "6 - Create Student");
+                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "7-  Update Student");
+                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "8 - Delete Student");
+                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "9 - Get Student by Group");
+                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "10 - All Students by Group");
+                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "11 - Create Teacher");
+                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "12-  Update Teacher");
+                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "13 - Delete  Teacher");
+                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "14- Get All");
+                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "15- Get All teachers by group");
+                    ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "16 - Add group to teacher");
                     ConsoleHelper.WriteTextWithColor(ConsoleColor.Green, "0 - Exit");
                     Console.WriteLine("----");
                     ConsoleHelper.WriteTextWithColor(ConsoleColor.Yellow, "Select option");
@@ -47,7 +52,7 @@ namespace AcademyApp
                     bool result = int.TryParse(number, out selectedNumber);
                     if (result)
                     {
-                        if (selectedNumber >= 0 && selectedNumber <= 10)
+                        if (selectedNumber >= 0 && selectedNumber <= 16)
                         {
                             switch (selectedNumber)
                             {
@@ -75,11 +80,29 @@ namespace AcademyApp
                                 case (int)Options.DeleteStudent:
                                     _studentController.DeleteStudent();
                                     break;
-                                case (int)Options.GetAllStudentByGroup:
-                                    _studentController.GetAllStudentByGroup();
+                                case (int)Options.AllStudentsByGroup:
+                                    _studentController.AllStudenstByGroup();
                                     break;
                                 case (int)Options.GetStudentByGroup:
-                                    _studentController.GetAllStudentByGroup();
+                                    _studentController.GetStudentByGroup();
+                                    break;
+                                case (int)Options.CreateTeacher:
+                                    _teacherController.CreateTeacher();
+                                    break;
+                                case (int)Options.UpdateTeacher:
+                                    _teacherController.UpdateTeacher();
+                                    break;
+                                case (int)Options.DeleteTeacher:
+                                    _teacherController.DeleteTeacher();
+                                    break;
+                                case (int)Options.GetAll:
+                                    _teacherController.GetAll();
+                                    break;
+                                case (int)Options.AddGroupToTeacher:
+                                    _teacherController.AddGroupToTeacher();
+                                    break;
+                                case (int)Options.GetAllGroupsByTeacher:
+                                    _teacherController.GetAllGroupsByTeacher();
                                     break;
                                 case (int)Options.Exit:
                                     _groupController.Exit();

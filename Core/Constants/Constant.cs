@@ -18,8 +18,15 @@ namespace Core.Constans
         CreateStudent,
         UpdateStudent,
         DeleteStudent,
-        GetAllStudentByGroup,
-        GetStudentByGroup
+        AllStudentsByGroup,
+        GetStudentByGroup,
+        CreateTeacher,
+        DeleteTeacher,
+        UpdateTeacher,
+        GetAll,
+        AddGroupToTeacher,
+        GetAllGroupsByTeacher
+
         
     }
 }

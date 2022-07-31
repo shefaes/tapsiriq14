@@ -14,29 +14,54 @@ namespace DataAccess.Repositories.Implementations
         private static int id;
 
         public Admin Create(Admin entity)
-        {
-            id++;
+
+        {   id++;
             entity.Id = id;
+            try
+            {
             DbContext.Admins.Add(entity);
+            }
+            catch (Exception )
+            {
+                Console.WriteLine("Something went wrong");
+            }
             return entity;
         }
 
         public void Delete(Admin entity)
         {
-            DbContext.Admins.Remove(entity);
+            try
+            {
+              DbContext.Admins.Remove(entity);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong");
+            }
+            
         }
 
         public void Update(Admin entity)
         {
-            var admin = DbContext.Admins.Find(a => a.Id == entity.Id);
-            if (admin != null)
+            try
             {
-                admin.Username = entity.Username;
-                admin.Password = entity.Password;
+                var admin = DbContext.Admins.Find(a => a.Id == entity.Id);
+                if (admin != null)
+                {
+                    admin.Username = entity.Username;
+                    admin.Password = entity.Password;
+                }
             }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong");
+            }  
         }
+
         public Admin Get(Predicate<Admin> filter = null)
         {
+            try
+            {
             if (filter == null)
             {
                 return DbContext.Admins[0];
@@ -45,21 +70,40 @@ namespace DataAccess.Repositories.Implementations
             {
                 return DbContext.Admins.Find(filter);
             }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong");
+                return null;
+            }
+            
         }
+
         public List<Admin> GetAll(Predicate<Admin> filter = null)
         {
-            if (filter == null)
+            try
             {
-                return DbContext.Admins;
-
+                if (filter == null)
+                { 
+                   return DbContext.Admins;
+                }
+                else
+                {
+                   return DbContext.Admins.FindAll(filter);
+                }
             }
-            else
+            catch (Exception)
             {
-                return DbContext.Admins.FindAll(filter);
-            }
 
+                Console.WriteLine("Something went wrong");
+                return null;
+            }
         }
 
+        Admin IRepository<Admin>.Create(Admin entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

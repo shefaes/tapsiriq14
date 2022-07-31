@@ -15,8 +15,9 @@ namespace Core.Entities
 
         public int MaxSize { get; set; }
 
-        public object Surname { get; set; }
-
         public int CurrentSize { get; set; }
+
+        public Teacher Teacher { get; set; }
+        public object Student { get; set; }
     }
 }

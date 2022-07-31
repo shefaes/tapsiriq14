@@ -18,26 +18,50 @@ namespace DataAccess.Repositories.Implementations
         {
             id++;
             entity.Id = id;
-            DbContext.Groups.Add(entity);
+            try
+            {
+               DbContext.Groups.Add(entity);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong");
+              
+            }
             return entity;
         }
 
         public void Delete(Group entity)
         {
-            DbContext.Groups.Remove(entity);
+            try
+            {
+             DbContext.Groups.Remove(entity);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong");
+            }
+            
         }
 
         public void Update(Group entity)
         {
-            var group = DbContext.Groups.Find(g => g.Id == entity.Id);
-            if (group != null)
+            try
             {
+             var group = DbContext.Groups.Find(g => g.Id == entity.Id);
+            if (group != null)
                 group.Name = entity.Name;
                 group.MaxSize = entity.MaxSize;
             }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong");
+            }
         }
+
         public Group Get(Predicate<Group> filter = null)
         {
+            try
+            {
             if (filter == null)
             {
                 return DbContext.Groups[0];
@@ -46,9 +70,19 @@ namespace DataAccess.Repositories.Implementations
             {
                 return DbContext.Groups.Find(filter);
             }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong");
+                return null;
+            }
+           
         }
+
         public List<Group> GetAll(Predicate<Group> filter = null)
         {
+            try
+            {
             if (filter == null) 
             {
                 return DbContext.Groups;
@@ -58,7 +92,17 @@ namespace DataAccess.Repositories.Implementations
             {
                 return DbContext.Groups.FindAll(filter);
             }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong");
+                return null;
+            }
+        }
 
+        Group IRepository<Group>.Create(Group entity)
+        {
+            throw new NotImplementedException();
         }
 
         public static implicit operator GroupRepository(StudentRepository v)

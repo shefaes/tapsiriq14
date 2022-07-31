@@ -14,29 +14,53 @@ namespace DataAccess.Repositories.Implementations
 
         public Student Create(Student entity)
         {
-            DbContext.Students.Add(entity);
+            try
+            {
+             DbContext.Students.Add(entity);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong");
+            }
             return entity;
         }
 
         public void Delete(Student entity)
         {
-            DbContext.Students.Remove(entity);
+            try
+            {
+             DbContext.Students.Remove(entity);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong");
+            }
+            
         }
-
-
 
 
         public void Update(Student entity)
         {
-            var student = DbContext.Groups.Find(g => g.Id == entity.Id);
+            try
+            {
+             var student = DbContext.Groups.Find(g => g.Id == entity.Id);
             if (student != null)
             {
                 student.Name = entity.Name;
                 student.Surname = entity.Surname;
             }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong");
+            }
+            
         }
+
         public Student Get(Predicate<Student> filter = null)
         {
+            try
+            {
             if (filter == null)
             {
                 return DbContext.Students[0];
@@ -45,9 +69,19 @@ namespace DataAccess.Repositories.Implementations
             {
                 return DbContext.Students.Find(filter);
             }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong");
+            }
+            return null;
+            
         }
+
         public List<Student> GetAll(Predicate<Student> filter = null)
         {
+            try
+            {
             if (filter == null)
             {
                 return DbContext.Students;
@@ -57,8 +91,12 @@ namespace DataAccess.Repositories.Implementations
             {
                 return DbContext.Students.FindAll(filter);
             }
-
-
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Something went wrong");
+            }
+            return null;
         }
     }
  }

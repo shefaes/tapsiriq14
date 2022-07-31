@@ -20,5 +20,10 @@ namespace Core.Helpers
         {
             throw new NotImplementedException();
         }
+
+        public static void WriteTextWithColor(ConsoleColor yellow, object name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
